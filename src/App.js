@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import DataBox from './components/DataBox'
+import Graph from './components/Graph'
+const BASE_URL = 'http://localhost:9000' 
+const HEROKU = 'https://ispindel-endpoint-1.herokuapp.com' 
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        data: []
+    }
+
+    componentDidMount() {
+        fetch(`${HEROKU}/ispindel`)
+            .then(response => response.json())
+            .then(data => {this.setState({ data })})
+    }
+
+    render() {
+        const { data } = this.state
+        return (
+            <div className="App">
+                <Graph data={data}/>
+            </div>
+        );
+    }
 }
 
 export default App;
