@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import DataBox from './components/DataBox'
+import Header from './components/Header'
 import Graph from './components/Graph'
+import Grid from './components/Grid'
+import AddWidget from './components/AddWidget'
 const BASE_URL = 'http://localhost:9000' 
 const HEROKU = 'https://ispindel-endpoint-1.herokuapp.com' 
 
 class App extends Component {
     state = {
-        data: []
+        data: [],
+        displayForm: false
     }
 
     componentDidMount() {
@@ -16,11 +19,22 @@ class App extends Component {
             .then(data => {this.setState({ data })})
     }
 
+    toggleForm = () => {
+        this.setState({
+            displayForm: !this.state.displayForm
+        })
+    }
+
     render() {
-        const { data } = this.state
+        const { data, displayForm } = this.state
         return (
             <div className="App">
-                <Graph data={data}/>
+                <Header toggleForm={this.toggleForm}/>
+                {displayForm 
+                    ? <AddWidget />
+                    : null
+                }
+                <Grid data={data} />
             </div>
         );
     }
