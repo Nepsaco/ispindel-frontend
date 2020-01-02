@@ -29,92 +29,93 @@ export default class Graph extends Component{
     render() {
         const { toggleWidget, widget } = this.props
         return(
-            <div className='widget'>
-                <div className='graph'>
-                    <a className='close' href='#' onClick={() => toggleWidget(widget)}>&times;</a>
-                    <VictoryChart
+            <div className='graph'>
+                <VictoryChart
+                    style={{
+                        maxWidth: '90%',
+                        maxHeight: '90%'
+                    }}
+                    width={1400}
+                    height={300}
+                    minDomain={0}
+                    containerComponent={<VictoryZoomContainer 
+                        zoomDomain={{y: [0, 40]}} 
                         style={{
-                            parent: {
-                                maxWidth: '90%',
-                                maxHeight: '90%'
-                            },
+                            maxWidth: '90%',
+                            maxHeight: '90%'
                         }}
-                            width={1800}
-                            height={400}
+                        width={1400}
+                        height={300}
+                    />}
+                >
+                    <VictoryLine 
+                        style={{
+                            data: { stroke: 'hsl(0, 60%, 50%)' },
+                        }}
+                        labelComponent={<VictoryTooltip/>}
+                        data={this.gravityDataArray(this.props.data)}
+                        animate={{
+                            duration: 3500,
+                            easing: 'sinInOut',
+                            OnExit: 500
+                        }}
+                    />
+                    <VictoryAxis 
+                        dependentAxis={true}
+                        scale='linear'
+                        tickFormat={(t) => `${t}°P`}
+                        className='axis'
+                    > 
+                    </VictoryAxis>
+                    <VictoryAxis
+                        dependentAxis={true}
+                        scale='linear'
                         minDomain={0}
-                        containerComponent={<VictoryZoomContainer 
-                            zoomDomain={{y: [0, 40]}} 
-                        />}
-                    >
-                        <VictoryLine 
-                            style={{
-                                data: { stroke: 'hsl(0, 60%, 50%)' },
-                            }}
-                            labelComponent={<VictoryTooltip/>}
-                            data={this.gravityDataArray(this.props.data)}
-                            animate={{
-                                duration: 3500,
-                                easing: 'sinInOut',
-                                OnExit: 500
-                            }}
-                        />
-                        <VictoryAxis 
-                            dependentAxis={true}
-                            scale='linear'
-                            tickFormat={(t) => `${t}°P`}
-                            className='axis'
-                        > 
-                        </VictoryAxis>
-                        <VictoryAxis
-                            dependentAxis={true}
-                            scale='linear'
-                            minDomain={0}
-                            tickFormat={(t) => `${t}°`}
-                            orientation='right'
-                        > 
-                        </VictoryAxis>
-                        <VictoryAxis
-                            independentAxis={true}
-                            label='Time'
-                            tickCount={3}
-                        > 
-                        </VictoryAxis>
-                        <VictoryLine 
-                            style={{
-                                data: { stroke: 'hsl(240, 60%, 50%)' },
-                            }}
-                            data={this.temperatureDataArray(this.props.data)}
-                            animate={{
-                                duration: 3500,
-                                easing: 'sinInOut'
-                            }}
-                            labelComponent={<VictoryTooltip />}
-                        />
-                        <VictoryScatter
-                            style={{
-                                data: { fill: 'hsl(0, 60%, 50%)' },
-                            }}
-                            data={this.gravityDataArray(this.props.data)}
-                            labelComponent={<VictoryTooltip/>}
-                            animate={{
-                                duration: 3500,
-                                easing: 'sinInOut',
-                                OnExit: 500
-                            }}
-                        />
-                        <VictoryScatter
-                            style={{
-                                data: { fill: 'hsl(240, 60%, 50%)' },
-                            }}
-                            data={this.temperatureDataArray(this.props.data)}
-                            labelComponent={<VictoryTooltip/>}
-                            animate={{
-                                duration: 3500,
-                                easing: 'sinInOut'
-                            }}
-                        />
-                    </VictoryChart>
-                </div>
+                        tickFormat={(t) => `${t}°`}
+                        orientation='right'
+                    > 
+                    </VictoryAxis>
+                    <VictoryAxis
+                        independentAxis={true}
+                        label='Time'
+                        tickCount={3}
+                    > 
+                    </VictoryAxis>
+                    <VictoryLine 
+                        style={{
+                            data: { stroke: 'hsl(240, 60%, 50%)' },
+                        }}
+                        data={this.temperatureDataArray(this.props.data)}
+                        animate={{
+                            duration: 3500,
+                            easing: 'sinInOut'
+                        }}
+                        labelComponent={<VictoryTooltip />}
+                    />
+                    <VictoryScatter
+                        style={{
+                            data: { fill: 'hsl(0, 60%, 50%)' },
+                        }}
+                        data={this.gravityDataArray(this.props.data)}
+                        labelComponent={<VictoryTooltip/>}
+                        animate={{
+                            duration: 3500,
+                            easing: 'sinInOut',
+                            OnExit: 500
+                        }}
+                    />
+                    <VictoryScatter
+                        style={{
+                            data: { fill: 'hsl(240, 60%, 50%)' },
+                        }}
+                        data={this.temperatureDataArray(this.props.data)}
+                        labelComponent={<VictoryTooltip/>}
+                        animate={{
+                            duration: 3500,
+                            easing: 'sinInOut'
+                        }}
+                    />
+                </VictoryChart>
             </div>
         )
     }

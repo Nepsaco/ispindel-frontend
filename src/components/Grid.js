@@ -7,10 +7,7 @@ export default function Grid(props) {
 
     return(
         <div className='grid-container'>
-            {displayWidget.graph
-                ?<Graph data={data} toggleWidget={toggleWidget} widget={'graph'} />
-                :null
-            }
+            <Graph data={data} toggleWidget={toggleWidget} widget={'graph'} />
             {displayWidget.angle
                 ?<Widget data={`${data[0].angle}°`}  widget={'angle'} type={'Angle'} toggleWidget={toggleWidget} />
                 :null
@@ -20,7 +17,7 @@ export default function Grid(props) {
                 :null
             }
             {displayWidget.gravity
-                ?<Widget data={`${data[0].gravity} °P`} widget={'gravity'} type={'Gravity'} toggleWidget={toggleWidget} />
+                ?<Widget data={`${data[0].gravity} °P`} widget={'gravity'} type={'Specific Gravity'} toggleWidget={toggleWidget} />
                 :null
             }
             {displayWidget.temperature
