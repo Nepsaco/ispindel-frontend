@@ -65,6 +65,51 @@ table {
     padding: 1rem;
     box-shadow: 5px 5px 5px #0d0c0c; }
 
+.overlay {
+  font-size: 1.5rem;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  opacity: 1; }
+  .overlay .add-form {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: relative;
+    background-color: #413e3e;
+    padding: 2rem;
+    transition: all 5s ease-in-out;
+    width: 50vw;
+    height: 50vh;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly; }
+  .overlay label {
+    padding-bottom: 1rem;
+    width: 50%; }
+  .overlay input {
+    margin: 0;
+    width: 50%; }
+  .overlay .submit {
+    justify-items: center; }
+  .overlay .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333; }
+    .overlay .close:hover {
+      color: #cc3333; }
+
 body {
   background-color: #413e3e;
   font-family: "Overpass", sans-serif;

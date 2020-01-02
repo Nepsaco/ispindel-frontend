@@ -31,7 +31,7 @@ class App extends Component {
             <div className="App">
                 <Header toggleForm={this.toggleForm}/>
                 {displayForm 
-                    ? <AddWidget />
+                    ? <AddWidget toggleForm={this.toggleForm}/>
                     : null
                 }
                 <Grid data={data} />
