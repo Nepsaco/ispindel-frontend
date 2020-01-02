@@ -1,6 +1,25 @@
 .graph {
+    & .close {
+        height: 5%;
+    }
+
+    height: 90%;
+    width: 100%;
     background-color: $primary3;
     display: flex;
     flex-flow: wrap;
     justify-content: center;
+    align-content: center;
+    overflow: hidden;
+
+    svg {
+        width: 80%;
+        max-width: 100%;
+        max-height: 100%;
+        @include primary-font;
+
+        .axis {
+            font-size: 2rem;
+        }
+    }
 }

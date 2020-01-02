@@ -1,0 +1,40 @@
+.widget {
+    display: flex;
+    background-color: $primary3;
+    justify-content: center;
+    flex-flow: wrap;
+    box-shadow: 0 0 15px $shadow;
+
+    .data-container {
+        width: 100%;
+        height: 30%;
+        h2 {
+        width: 100%;
+            text-align: center;
+            @include card-font;
+        }
+    }
+
+    .type-container{
+        height: 30%;
+        h3 {
+            text-align: center;
+            @include small-card-font;
+        }
+    }
+
+    .close {
+        width: 100%;
+        height: 30%;
+        text-align: right;
+        padding: .5rem;
+        transition: all 200ms;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+
+        &:hover {
+            color: $highlight;
+        }
+    }
+}

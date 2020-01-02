@@ -10,7 +10,14 @@ const HEROKU = 'https://ispindel-endpoint-1.herokuapp.com'
 class App extends Component {
     state = {
         data: [],
-        displayForm: false
+        displayForm: false,
+        displayWidget: {
+            battery: false,
+            gravity: false,
+            temperature: false,
+            angle: false,
+            graph: false
+        }
     }
 
     componentDidMount() {
@@ -25,16 +32,23 @@ class App extends Component {
         })
     }
 
+    toggleWidget = (widget) => {
+        const { displayWidget } = this.state
+        const newObject = {...displayWidget}
+        newObject[widget] = !displayWidget[widget]
+        this.setState({ displayWidget: {...newObject }})
+    }
+
     render() {
-        const { data, displayForm } = this.state
+        const { data, displayForm, displayWidget } = this.state
         return (
             <div className="App">
                 <Header toggleForm={this.toggleForm}/>
                 {displayForm 
-                    ? <AddWidget toggleForm={this.toggleForm}/>
+                    ? <AddWidget toggleForm={this.toggleForm} toggleWidget={this.toggleWidget} />
                     : null
                 }
-                <Grid data={data} />
+                <Grid data={data} displayWidget={displayWidget} toggleWidget={this.toggleWidget} />
             </div>
         );
     }

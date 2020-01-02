@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 
 export default class AddWidget extends Component{
-    state ={
-        data: ''
+    state = {
+        widget: ''
+    }
+
+    handleChange = (event) => {
+        this.setState({
+            widget: event.target.value
+        })
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-        const formData = new FormData(event.target)
-        const data = formData.get('')
-        console.log(event.target.value)
-        this.setState({ data })
+        
+        this.props.toggleWidget(this.state.widget)
         const { toggleForm } = this.props
         toggleForm()
     }
@@ -20,17 +24,51 @@ export default class AddWidget extends Component{
             <div className='overlay'>
                 <a className='close' href='#' onClick={this.props.toggleForm}>&times;</a>
                 <form className='add-form' onSubmit={this.handleSubmit}>
+                    <input 
+                        type='radio' 
+                        name='data' 
+                        value='battery' 
+                        checked={this.state.widget === 'battery'} 
+                        onChange={this.handleChange}
+                    />
                     <label>Battery</label>
-                    <input type='radio' name='data' value='battery' />
+                    <input 
+                        type='radio' 
+                        name='data' 
+                        value='gravity' 
+                        checked={this.state.widget === 'gravity'} 
+                        onChange={this.handleChange}
+                    />
                     <label>Gravity</label>
-                    <input type='radio' name='data' value='gravity' />
+                    <input 
+                        type='radio' 
+                        name='data' 
+                        value='temperature' 
+                        checked={this.state.widget === 'temperature'} 
+                        onChange={this.handleChange}
+                    />
                     <label>Temperature</label>
-                    <input type='radio' name='data' value='temperature' />
+                    <input 
+                        type='radio' 
+                        name='data' 
+                        value='angle' 
+                        checked={this.state.widget === 'angle'} 
+                        onChange={this.handleChange}
+                    />
                     <label>Angle</label>
-                    <input type='radio' name='data' value='angle' />
+                    <input 
+                        type='radio' 
+                        name='data' 
+                        value='graph' 
+                        checked={this.state.widget === 'graph'} 
+                        onChange={this.handleChange}
+                    />
                     <label>Graph</label>
-                    <input type='radio' name='data' value='graph' />
-                    <input className='submit' type='submit' value='Add' />
+                    <input 
+                        className='submit' 
+                        type='submit' 
+                        value='Add' 
+                    />
                 </form>
             </div>
         )

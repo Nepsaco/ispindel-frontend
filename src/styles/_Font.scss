@@ -5,6 +5,7 @@ $font: 'Overpass', sans-serif;
 $regular: 1rem;
 $l: 1.5rem;
 $xl: 2rem;
+$xxl:3rem;
 
 
 @mixin header-font {
@@ -19,3 +20,14 @@ $xl: 2rem;
     font-size: $regular;
 }
 
+@mixin card-font {
+    font-family: $font;
+    font-weight: 800;
+    font-size: $xxl;
+}
+
+@mixin small-card-font {
+    font-family: $font;
+    font-weight: 400;
+    font-size: $xl;
+}
