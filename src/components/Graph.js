@@ -27,7 +27,6 @@ export default class Graph extends Component{
     }
 
     render() {
-        const { toggleWidget, widget } = this.props
         return(
             <div className='graph'>
                 <VictoryChart
