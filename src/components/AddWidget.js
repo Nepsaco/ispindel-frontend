@@ -13,16 +13,17 @@ export default class AddWidget extends Component{
 
     handleSubmit = (event) => {
         event.preventDefault()
+        const { toggleWidget, toggleAddForm } = this.props
+        const { widget } = this.state
         
-        this.props.toggleWidget(this.state.widget)
-        const { toggleForm } = this.props
-        toggleForm()
+        toggleWidget(widget)
+        toggleAddForm()
     }
 
     render(){
         return(
             <div className='overlay'>
-                <a className='close' href='#' onClick={this.props.toggleForm}>&times;</a>
+                <a className='close' href='#' onClick={this.props.toggleAddForm}>&times;</a>
                 <form className='add-form' onSubmit={this.handleSubmit}>
                     <input 
                         type='radio' 
@@ -56,14 +57,14 @@ export default class AddWidget extends Component{
                         onChange={this.handleChange}
                     />
                     <label>Angle</label>
-                    <input 
-                        type='radio' 
-                        name='data' 
-                        value='graph' 
-                        checked={this.state.widget === 'graph'} 
-                        onChange={this.handleChange}
-                    />
-                    <label>Graph</label>
+                    {/* <input */} 
+                    {/*     type='radio' */} 
+                    {/*     name='data' */} 
+                    {/*     value='graph' */} 
+                    {/*     checked={this.state.widget === 'graph'} */} 
+                    {/*     onChange={this.handleChange} */}
+                    {/* /> */}
+                    {/* <label>Graph</label> */}
                     <input 
                         className='submit' 
                         type='submit' 

@@ -10,7 +10,7 @@
     transition: opacity 500ms;
     opacity: 1;
 
-     .add-form {
+    .user-signup {
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -18,40 +18,24 @@
         background-color: $primary2;
         padding: 2rem;
         transition: all 2s ease-in-out;
-        width: 50vw;
-        height: 50vh;
+        width: 40vw;
+        height: 30vh;
         border-radius: 10px;
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: column; 
         justify-content: space-evenly;
+        text-align: center;
 
-        label {
-            padding-bottom: 1rem;
-            width: 90%;
+        h2 {
+            font-size: $xl;
         }
 
         input {
+            align-self: center;
             margin: 0;
-            width: 10%;
+            width: 30vw;
+            height: 3vh;
         }
 
-        .submit {
-            width: 20vw;
-        }
-    }
-
-    .close {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        transition: all 200ms;
-        font-size: 30px;
-        font-weight: bold;
-        text-decoration: none;
-        color: #333;
-
-        &:hover {
-            color: $highlight;
-        }
     }
 }
